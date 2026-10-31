@@ -1,0 +1,18 @@
+/* LAYOUT — COMPACT
+   Tightens the stage and panels for 1080p or narrow windows. */
+
+:root {
+  --hx-space: 0.72;
+}
+
+.LibraryHome {
+  padding: 9px;
+}
+
+.AppDetailsSection {
+  padding: 11px;
+}
+
+.PlayBar {
+  padding-block: 8px;
+}

@@ -1,0 +1,14 @@
+/* CORNER RADIUS — CRISP
+   Tighter corners for denser, more technical layouts. */
+
+:root {
+  --hx-radius: 10px;
+  --hx-radius-sm: 7px;
+  --hx-radius-xs: 5px;
+  --hx-radius-lg: 14px;
+}
+
+.SuperNav .MenuButton,
+.SuperNavMenu .MenuButton {
+  border-radius: var(--hx-radius-sm);
+}

@@ -1,0 +1,6 @@
+/* AMBIENT GLOW — NONE
+   Flattens the atmosphere for a darker, quieter surface. */
+
+:root {
+  --hx-glow-opacity: 0;
+}

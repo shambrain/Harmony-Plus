@@ -1,0 +1,200 @@
+/* ============================================================================
+   HARMONY+ — STORE & COMMUNITY
+   Conservative browser-view styling. The store ships its own CSS after themes,
+   so surfaces use `html body ...` specificity. Checkout, prices, discounts and
+   native controls keep their hierarchy. No layout is removed or hidden.
+   ============================================================================ */
+
+html body,
+html body.responsive_page {
+  background:
+    radial-gradient(900px 420px at 20% -10%, rgba(16, 95, 235, 0.1), transparent 65%),
+    linear-gradient(180deg, #0a0f1b 0%, #060910 100%) !important;
+  color: #c8d2e6 !important;
+  font-family: var(--hx-font, "Montserrat", "Motiva Sans", "Segoe UI", sans-serif) !important;
+}
+
+html body a {
+  color: var(--hx-blue-hi, #3d7cff);
+}
+
+html body a:hover {
+  color: #ffffff;
+}
+
+html body .responsive_page_frame,
+html body .responsive_page_content,
+html body .responsive_page_template_content,
+html body .home_page_body_ctn,
+html body .main_content_ctn,
+html body .page_content,
+html body .home_page_content {
+  background: transparent !important;
+}
+
+html body .responsive_page_frame {
+  background:
+    linear-gradient(180deg, rgba(16, 95, 235, 0.06), transparent 240px) !important;
+}
+
+html body .home_page_body_ctn {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Capsules: soft rounded Fluent cards. */
+html body .store_main_capsule,
+html body .store_capsule,
+html body .carousel_container .capsule {
+  border-radius: var(--hx-radius-sm, 12px);
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 10px 26px rgba(0, 0, 0, 0.32);
+  transition: box-shadow 200ms ease;
+}
+
+html body .store_main_capsule:hover,
+html body .store_capsule:hover {
+  box-shadow:
+    0 0 0 1px rgba(61, 124, 255, 0.5),
+    0 16px 36px rgba(0, 0, 0, 0.4);
+}
+
+html body .store_main_capsule .capsule,
+html body .capsule_image_ctn {
+  border-radius: calc(var(--hx-radius-sm, 12px) - 2px);
+}
+
+html body .home_cluster_ctn .cluster_header,
+html body .home_pagecontent_ctn .section_title,
+html body .home_title,
+html body .main_content_ctn h2 {
+  color: var(--hx-blue-hi, #3d7cff) !important;
+  font-family: var(--hx-font-display, "Montserrat", "Motiva Sans", sans-serif) !important;
+  font-weight: var(--hx-display-weight, 800);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+html body .home_title_ctn {
+  border-top: 1px solid rgba(16, 95, 235, 0.45);
+  padding-top: 10px;
+}
+
+/* Primary purchase actions only. */
+html body .btn_green_steamui,
+html body .btn_add_to_cart_steamui,
+html body .btnv6_blue_hoverfade.btn_medium {
+  background: linear-gradient(180deg, var(--hx-blue-hi, #3d7cff), var(--hx-blue, #105feb)) !important;
+  color: #ffffff !important;
+  border-radius: var(--hx-radius-sm, 12px);
+  text-shadow: none !important;
+}
+
+html body .btn_green_steamui:hover,
+html body .btn_add_to_cart_steamui:hover {
+  filter: brightness(1.08);
+}
+
+html body .btn_grey_white_innerfade,
+html body .btnv6_white_transparent,
+html body .btn_medium {
+  border-radius: var(--hx-radius-sm, 12px);
+}
+
+/* Forms */
+html body input[type="text"],
+html body input[type="search"],
+html body input[type="email"],
+html body input[type="password"],
+html body textarea,
+html body select {
+  background: rgba(10, 15, 26, 0.82) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: var(--hx-radius-sm, 12px);
+  color: #f7f9ff !important;
+}
+
+html body input:focus,
+html body textarea:focus,
+html body select:focus {
+  border-color: var(--hx-blue-line, rgba(16, 95, 235, 0.45)) !important;
+  box-shadow: 0 0 0 4px var(--hx-blue-soft, rgba(16, 95, 235, 0.16));
+  outline: none;
+}
+
+/* ============================================================================
+   COMMUNITY
+   ============================================================================ */
+
+html body .profile_header,
+html body .profile_header_content,
+html body .profile_customization,
+html body .profile_summary,
+html body .profile_item_links,
+html body .profile_rightcol,
+html body .profile_leftcol {
+  background-color: transparent !important;
+}
+
+html body .profile_header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+html body .profile_customization,
+html body .commentthread_comment,
+html body .commentthread_comment_container,
+html body .workshopItem,
+html body .workshopBrowseItems,
+html body .groupHomeHeader {
+  background: rgba(20, 28, 46, 0.72) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--hx-radius-sm, 12px);
+  color: #c8d2e6;
+}
+
+html body .commentthread_comment:hover {
+  border-color: rgba(16, 95, 235, 0.45);
+}
+
+html body .workshopItem {
+  overflow: hidden;
+}
+
+html body .workshopItemTitle,
+html body .commentthread_author_link,
+html body .groupHomeHeader .groupTitle {
+  color: var(--hx-blue-hi, #3d7cff) !important;
+}
+
+html body .apphub_sectionTabs,
+html body .profile_item_links,
+html body .game_page_links {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html body ::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+html body ::-webkit-scrollbar-track {
+  background: #060910;
+}
+
+html body ::-webkit-scrollbar-thumb {
+  background: #2a3550;
+  border-radius: 999px;
+  border: 2px solid #060910;
+}
+
+html body ::-webkit-scrollbar-thumb:hover {
+  background: var(--hx-blue, #105feb);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body * {
+    transition-duration: 0.001ms !important;
+    animation-duration: 0.001ms !important;
+  }
+}

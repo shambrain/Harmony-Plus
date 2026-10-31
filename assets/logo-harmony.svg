@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="harmonyLogoTitle">
+  <title id="harmonyLogoTitle">Harmony+ original mark</title>
+  <defs>
+    <linearGradient id="hxBlue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3d7cff"/>
+      <stop offset="0.55" stop-color="#105feb"/>
+      <stop offset="1" stop-color="#0a46b8"/>
+    </linearGradient>
+    <linearGradient id="hxWhite" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#dbe6ff"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="60" height="60" rx="19" fill="url(#hxBlue)"/>
+  <rect x="2" y="2" width="60" height="60" rx="19" fill="none" stroke="#ffffff" stroke-opacity="0.22" stroke-width="1.5"/>
+  <path d="M19 43V27c0-5 3.6-9 9-9s9 4 9 9v16" fill="none" stroke="url(#hxWhite)" stroke-width="6.5" stroke-linecap="round"/>
+  <path d="M37 43V31" fill="none" stroke="url(#hxWhite)" stroke-width="6.5" stroke-linecap="round"/>
+  <circle cx="47" cy="19" r="3.2" fill="#9cc0ff"/>
+</svg>

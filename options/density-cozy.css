@@ -1,0 +1,14 @@
+/* LAYOUT — COZY (default)
+   The composition as designed: generous but not wasteful. */
+
+:root {
+  --hx-space: 1;
+}
+
+.LibraryHome {
+  padding: 20px;
+}
+
+.AppDetailsSection {
+  padding: 18px;
+}

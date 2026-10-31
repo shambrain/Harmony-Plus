@@ -1,0 +1,9 @@
+/* CORNER RADIUS — SOFT (default)
+   Full Fluent geometry with pill navigation. */
+
+:root {
+  --hx-radius: 18px;
+  --hx-radius-sm: 12px;
+  --hx-radius-xs: 9px;
+  --hx-radius-lg: 24px;
+}

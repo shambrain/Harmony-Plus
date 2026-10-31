@@ -1,0 +1,820 @@
+/* ============================================================================
+   HARMONY+ — CORE FLUENT MATERIAL SYSTEM
+   Main Steam window.
+
+   Exact brand blue: #105FEB. Milk-white type. Rounded, calm, premium.
+   Selectors verified against the installed Steam client (changelist 11146165).
+   ============================================================================ */
+
+:where(:root) {
+  /* --- Brand ------------------------------------------------------------ */
+  --hx-blue: #105feb;
+  --hx-blue-hi: #3d7cff;
+  --hx-blue-lo: #0a46b8;
+  --hx-blue-soft: rgba(16, 95, 235, 0.16);
+  --hx-blue-line: rgba(16, 95, 235, 0.45);
+
+  /* --- Surfaces --------------------------------------------------------- */
+  --hx-void: #060910;
+  --hx-bg: #080c15;
+  --hx-bg-2: #0b1120;
+  --hx-ink: #0e1526;
+  --hx-surface: rgba(20, 28, 46, 0.72);
+  --hx-surface-solid: #121a2c;
+  --hx-surface-raised: rgba(29, 40, 64, 0.82);
+  --hx-surface-sunken: rgba(10, 15, 26, 0.72);
+  --hx-line: rgba(255, 255, 255, 0.08);
+  --hx-line-strong: rgba(255, 255, 255, 0.16);
+  --hx-sheen: rgba(255, 255, 255, 0.055);
+
+  /* --- Ink -------------------------------------------------------------- */
+  --hx-text: #f7f9ff;
+  --hx-text-soft: #c8d2e6;
+  --hx-text-muted: #8d9ab4;
+  --hx-text-dim: #6a7690;
+
+  /* --- Semantic (preserved) -------------------------------------------- */
+  --hx-online: #5bd6a0;
+  --hx-away: #f2bf5e;
+  --hx-offline: #7f8ba3;
+  --hx-danger: #f07a7a;
+  --hx-warning: #f2bf5e;
+  --hx-success: #5bd6a0;
+
+  /* --- Geometry --------------------------------------------------------- */
+  --hx-radius: 18px;
+  --hx-radius-sm: 12px;
+  --hx-radius-xs: 9px;
+  --hx-radius-lg: 24px;
+  --hx-radius-pill: 999px;
+  --hx-space: 1;
+  --hx-glow-opacity: 1;
+
+  /* --- Type ------------------------------------------------------------- */
+  --hx-font: "Harmony Montserrat", "Montserrat", "Motiva Sans", "Segoe UI", sans-serif;
+  --hx-font-display: "Harmony Montserrat", "Montserrat", "Motiva Sans", sans-serif;
+  --hx-display-weight: 800;
+  --hx-display-spacing: 0.1em;
+
+  /* --- Motion ---------------------------------------------------------- */
+  --hx-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --hx-fast: 140ms;
+  --hx-mid: 220ms;
+  --hx-slow: 360ms;
+  --hx-lift: -3px;
+
+  /* --- Frame ------------------------------------------------------------ */
+  --hx-frame-opacity: 1;
+}
+
+/* ============================================================================
+   CANVAS
+   ============================================================================ */
+
+html,
+body {
+  background: var(--hx-void) !important;
+  color: var(--hx-text);
+  font-family: var(--hx-font);
+}
+
+body.DesktopUI {
+  --color-text-body-title: var(--hx-text);
+  --color-text-body-subtitle: var(--hx-text-soft);
+  --color-text-body-body: var(--hx-text-soft);
+  --color-text-body-description: var(--hx-text-muted);
+  --color-text-body-note: var(--hx-text-dim);
+  background:
+    radial-gradient(1000px 620px at 6% -12%, rgba(16, 95, 235, calc(0.2 * var(--hx-glow-opacity))), transparent 62%),
+    radial-gradient(760px 520px at 96% 2%, rgba(61, 124, 255, calc(0.09 * var(--hx-glow-opacity))), transparent 64%),
+    linear-gradient(180deg, var(--hx-bg-2) 0%, var(--hx-bg) 52%, var(--hx-void) 100%) !important;
+}
+
+body.DesktopUI #root,
+body.DesktopUI .Root {
+  background:
+    radial-gradient(1000px 620px at 6% -12%, rgba(16, 95, 235, calc(0.22 * var(--hx-glow-opacity))), transparent 62%),
+    radial-gradient(760px 520px at 96% 2%, rgba(61, 124, 255, calc(0.1 * var(--hx-glow-opacity))), transparent 64%),
+    linear-gradient(180deg, var(--hx-bg-2) 0%, var(--hx-bg) 52%, var(--hx-void) 100%);
+}
+
+::selection {
+  background: var(--hx-blue);
+  color: #ffffff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.14);
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  border-radius: var(--hx-radius-pill);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--hx-blue);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+/* ============================================================================
+   IN-CLIENT FLUENT FRAME
+   A hairline frame and a cool top highlight. The native Windows titlebar is
+   outside the theme's reach and is left untouched.
+   ============================================================================ */
+
+body.DesktopUI::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  pointer-events: none;
+  opacity: var(--hx-frame-opacity);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 0 80px rgba(0, 0, 0, 0.35);
+}
+
+body.DesktopUI::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  z-index: 9001;
+  pointer-events: none;
+  opacity: var(--hx-frame-opacity);
+  background: linear-gradient(90deg, transparent, rgba(61, 124, 255, 0.8), transparent);
+}
+
+/* ============================================================================
+   TOP BAR
+   ============================================================================ */
+
+.TopBar,
+._3Z7VQ1IMk4E3HsHvrkLNgo {
+  position: relative;
+  background: linear-gradient(180deg, rgba(13, 19, 33, 0.97), rgba(8, 12, 21, 0.97)) !important;
+  border-bottom: 1px solid var(--hx-line);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(18px) saturate(1.2);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+}
+
+.OuterFrame {
+  background: transparent;
+}
+
+.SuperNavBar {
+  gap: 4px;
+}
+
+.SuperNav .MenuButton,
+.SuperNavMenu .MenuButton {
+  border-radius: var(--hx-radius-pill);
+  color: var(--hx-text-soft);
+  transition:
+    background var(--hx-fast) var(--hx-ease),
+    color var(--hx-fast) var(--hx-ease),
+    box-shadow var(--hx-fast) var(--hx-ease);
+}
+
+.SuperNav .MenuButton:hover,
+.SuperNavMenu .MenuButton:hover {
+  color: var(--hx-text);
+  background: var(--hx-sheen);
+}
+
+.SuperNavMenu.Selected .MenuButton,
+.SuperNavMenu .MenuButton.Selected,
+.MenuWrapper.Selected .MenuButton,
+.SuperNavMenu._1gqEjB5QsKT_NftD1dEsdZ .MenuButton {
+  color: #ffffff !important;
+  background: linear-gradient(180deg, var(--hx-blue-hi), var(--hx-blue));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    0 6px 18px -6px rgba(16, 95, 235, 0.8);
+}
+
+.SuperNavMenu.Selected .MenuButton::after,
+.MenuWrapper.Selected .MenuButton::after {
+  background: var(--hx-blue-hi) !important;
+}
+
+/* Original Harmony mark replaces the Steam glyph only; the button is intact. */
+.SteamButton {
+  background: url("assets/logo-harmony.svg") left center / 18px 18px no-repeat;
+  border-radius: var(--hx-radius-pill);
+}
+
+.SteamButton svg.Logo {
+  opacity: 0;
+}
+
+/* The native menu bar stays functional but recedes into the frame. */
+.RootMenuBar {
+  opacity: 0.66;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  transition: opacity var(--hx-fast) var(--hx-ease);
+}
+
+.RootMenuBar:hover {
+  opacity: 1;
+}
+
+/* ============================================================================
+   LIBRARY SIDEBAR
+   ============================================================================ */
+
+.GameListHomeAndSearch,
+._2TKEazUUS3TlniZfpc8OOe {
+  background: linear-gradient(180deg, rgba(13, 19, 33, 0.94), rgba(8, 12, 21, 0.98));
+  border-right: 1px solid var(--hx-line);
+}
+
+/* Whole left rail (Home + game list). */
+.LeftListSizableContainer,
+._9sPoVBFyE_vE87mnZJ5aB {
+  position: relative;
+  background: linear-gradient(180deg, rgba(12, 18, 31, 0.96), rgba(7, 10, 18, 0.99));
+  border-right: 1px solid var(--hx-line);
+  padding: 50px 10px 10px;
+}
+
+/* Original wordmark, drawn inside the rail. Decorative, not interactive. */
+.LeftListSizableContainer::before,
+._9sPoVBFyE_vE87mnZJ5aB::before {
+  content: "harmony+";
+  position: absolute;
+  top: 14px;
+  left: 22px;
+  font-family: var(--hx-font-display);
+  font-weight: var(--hx-display-weight);
+  font-size: 20px;
+  letter-spacing: -0.02em;
+  color: var(--hx-text);
+  pointer-events: none;
+}
+
+.LeftListSizableContainer::after,
+._9sPoVBFyE_vE87mnZJ5aB::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--hx-blue-hi);
+  box-shadow: 0 0 12px var(--hx-blue);
+  pointer-events: none;
+}
+
+/* A soft glass dock around the primary navigation. */
+.SuperNavBar {
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--hx-radius-pill);
+  padding: 3px;
+}
+
+.LeftListSizableContainer .Container,
+._3x1HklzyDs4TEjACrRO2tB {
+  background: transparent !important;
+}
+
+.SectionHeaderContent,
+._3cV3O8FnPQqpJO5kIMUlLX {
+  border-radius: var(--hx-radius-xs);
+  padding: 6px 6px;
+  transition: background var(--hx-fast) var(--hx-ease);
+}
+
+.SectionHeaderContent:hover {
+  background: var(--hx-sheen);
+}
+
+.SectionName,
+._2mZ8LlvoUiyeEUtIWuTri {
+  font-family: var(--hx-font-display);
+  font-weight: var(--hx-display-weight);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--hx-text-muted);
+}
+
+.CollapseIconParent:hover .SectionName {
+  color: var(--hx-text-soft);
+}
+
+.GameListHomeAndSearch .HomeBox,
+.GameListHomeAndSearch .Bar {
+  border-radius: var(--hx-radius-sm);
+  transition:
+    background var(--hx-fast) var(--hx-ease),
+    color var(--hx-fast) var(--hx-ease);
+}
+
+.GameListHomeAndSearch .HomeBox:hover,
+.GameListHomeAndSearch .Bar:hover {
+  background: var(--hx-sheen);
+}
+
+.GameListHomeAndSearch .HomeBox.Selected,
+.GameListHomeAndSearch .Bar.Selected,
+._3pSPluBgf0NeR1kkCLWMhR.Selected {
+  background: linear-gradient(90deg, var(--hx-blue-soft), rgba(255, 255, 255, 0.02));
+  box-shadow:
+    inset 3px 0 0 var(--hx-blue),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  color: var(--hx-text);
+}
+
+.GameListEntryContainer,
+._1vO6BoiVslZgs1kqDGdUs8 {
+  border-radius: var(--hx-radius-xs);
+  transition:
+    background var(--hx-fast) var(--hx-ease),
+    box-shadow var(--hx-fast) var(--hx-ease);
+}
+
+.GameListEntryContainer:hover,
+._1vO6BoiVslZgs1kqDGdUs8:hover {
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.GameListEntryContainer.Selected,
+._2-O4ZG0KrnSrzISHBKctFQ.Selected {
+  background: linear-gradient(90deg, var(--hx-blue-soft) 0%, rgba(255, 255, 255, 0.025) 80%);
+  box-shadow: inset 2px 0 0 var(--hx-blue);
+  color: var(--hx-text);
+}
+
+.GameListEntryContainer .Label,
+.GameListHomeAndSearch .Label {
+  color: var(--hx-text-soft);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.GameListEntryContainer:hover .Label {
+  color: var(--hx-text);
+}
+
+/* Sidebar search: a soft inset field. */
+.GameListHomeAndSearch input,
+._1bGewp3tfzqAF6fVTFFUOz input,
+._1bGewp3tfzqAF6fVTFFUOz .UkR3sY319PuaUNuUWks2K {
+  background: var(--hx-surface-sunken);
+  border: 1px solid var(--hx-line);
+  border-radius: var(--hx-radius-sm);
+  color: var(--hx-text);
+  transition:
+    border-color var(--hx-fast) var(--hx-ease),
+    box-shadow var(--hx-fast) var(--hx-ease);
+}
+
+.GameListHomeAndSearch input:focus-visible,
+._1bGewp3tfzqAF6fVTFFUOz input:focus-visible {
+  border-color: var(--hx-blue-line);
+  box-shadow: 0 0 0 4px var(--hx-blue-soft);
+  outline: none;
+}
+
+/* ============================================================================
+   LIBRARY HOME
+   ============================================================================ */
+
+.LibraryHome,
+._3Sb2o_mQ30IDRh0C72QUUu {
+  background: transparent !important;
+  padding: calc(20px * var(--hx-space));
+}
+
+.LibraryHome .SectionHeader,
+.LibraryHome .Panel > h2,
+.LibraryHome h2 {
+  font-family: var(--hx-font-display);
+  font-weight: var(--hx-display-weight);
+  letter-spacing: var(--hx-display-spacing);
+  text-transform: uppercase;
+  color: var(--hx-text);
+}
+
+.LibraryHome .BoxCarousel {
+  border-radius: var(--hx-radius-lg);
+}
+
+.LibraryItemBox,
+.WYgDg9NyCcMIVuMyZ_NBC.LibraryItemBox {
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--hx-surface-solid);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 10px 26px rgba(0, 0, 0, 0.34);
+  transition:
+    transform var(--hx-mid) var(--hx-ease),
+    box-shadow var(--hx-mid) var(--hx-ease);
+}
+
+.LibraryItemBox:hover,
+.LibraryItemBox:focus-visible {
+  transform: translateY(var(--hx-lift));
+  box-shadow:
+    0 0 0 1px rgba(61, 124, 255, 0.5),
+    0 16px 36px rgba(0, 0, 0, 0.42),
+    0 0 26px -10px rgba(16, 95, 235, 0.7);
+}
+
+.LibraryItemBox .Capsule,
+.LibraryItemBox .PortraitImage {
+  border-radius: 13px 13px 0 0;
+  overflow: hidden;
+}
+
+.LibraryItemBox .Capsule img,
+.LibraryItemBox .PortraitImage img {
+  border-radius: 13px 13px 0 0;
+}
+
+/* What's New / event cards share the same rounded language. */
+.PartnerEventRowCapsule,
+.B-vCdL38RiJlhfSRgZv78.PartnerEventRowCapsule_Container,
+.SPz0ipLqfF1oAO7tdrkdY.PartnerEventRowCapsule_MainImageContainer,
+.PartnerEventRowCapsule_MainImage {
+  border-radius: 16px;
+}
+
+.PartnerEventRowCapsule {
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 10px 24px rgba(0, 0, 0, 0.3);
+  transition: box-shadow var(--hx-mid) var(--hx-ease);
+}
+
+.PartnerEventRowCapsule:hover {
+  box-shadow:
+    0 0 0 1px rgba(61, 124, 255, 0.45),
+    0 16px 34px rgba(0, 0, 0, 0.4);
+}
+
+.HeaderPageControls .Name,
+.UpdatesContainer .Name {
+  font-family: var(--hx-font-display);
+  font-weight: var(--hx-display-weight);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 11.5px;
+  color: var(--hx-text-soft);
+}
+
+/* A calm blue edge on hover instead of a bright overlay. */
+.LibraryItemBox .Capsule {
+  position: relative;
+}
+
+.LibraryItemBox .Capsule::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--hx-blue-hi), transparent);
+  opacity: 0;
+  transition: opacity var(--hx-mid) var(--hx-ease);
+  pointer-events: none;
+}
+
+.LibraryItemBox:hover .Capsule::after {
+  opacity: 1;
+}
+
+.LibraryHome .AddShelfButton,
+.LibraryHome .AddShelf {
+  border: 1px dashed var(--hx-line-strong);
+  border-radius: var(--hx-radius-sm);
+  color: var(--hx-text-muted);
+  background: transparent;
+}
+
+.LibraryHome .AddShelfButton:hover {
+  border-color: var(--hx-blue-line);
+  color: var(--hx-text);
+}
+
+/* ============================================================================
+   GAME DETAILS
+   ============================================================================ */
+
+.AppDetailsMain {
+  background: transparent;
+}
+
+.HeaderBackgroundImage {
+  filter: saturate(1.04);
+}
+
+.TopCapsule {
+  border-bottom: 1px solid var(--hx-line);
+}
+
+.HeaderBackgroundImage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(6, 9, 16, 0.02) 0%, rgba(6, 9, 16, 0.4) 64%, var(--hx-void) 100%),
+    linear-gradient(90deg, rgba(6, 9, 16, 0.5), transparent 52%);
+}
+
+.PlayBar,
+._3fLo166MlaNqP8r8tTyRz.PlayBar {
+  background:
+    linear-gradient(90deg, rgba(17, 24, 40, 0.94), rgba(10, 15, 26, 0.9));
+  border: 1px solid var(--hx-line);
+  border-radius: var(--hx-radius);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 16px 40px rgba(0, 0, 0, 0.4);
+}
+
+.PlayBar.Glassy {
+  backdrop-filter: blur(18px) saturate(1.2);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+}
+
+.PlayButtonContainer.Green,
+.PlayButtonContainer {
+  border-radius: var(--hx-radius-sm);
+  overflow: hidden;
+}
+
+.PlayButton,
+._3ydigb6zZAjJ0JCDgHwSYA.PlayButton {
+  background: linear-gradient(180deg, var(--hx-blue-hi), var(--hx-blue) 60%, var(--hx-blue-lo));
+  color: #ffffff;
+  border-radius: var(--hx-radius-sm);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.24),
+    0 10px 24px -10px rgba(16, 95, 235, 0.9);
+  transition:
+    filter var(--hx-fast) var(--hx-ease),
+    transform var(--hx-fast) var(--hx-ease);
+}
+
+.PlayButton:hover,
+._3ydigb6zZAjJ0JCDgHwSYA.PlayButton:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.PlayButton .ButtonText {
+  font-family: var(--hx-font-display);
+  font-weight: var(--hx-display-weight);
+  letter-spacing: var(--hx-display-spacing);
+  text-transform: uppercase;
+}
+
+.PlayBarGameIcon,
+._1R9r2OBCxAmtuUVrgBEUBw.PlayBarGameIcon {
+  border-radius: var(--hx-radius-xs);
+  box-shadow: 0 0 0 1px var(--hx-line-strong);
+}
+
+.AppDetailsSection,
+._2r4TK4BAuU-J4FuF_O7v_5.AppDetailsSection {
+  background:
+    linear-gradient(180deg, rgba(23, 32, 52, 0.66), rgba(13, 19, 32, 0.7));
+  border: 1px solid var(--hx-line);
+  border-radius: var(--hx-radius);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.045);
+}
+
+.AppDetailsSection .SectionHeader,
+.AppDetailsSection h2 {
+  font-family: var(--hx-font-display);
+  font-weight: var(--hx-display-weight);
+  letter-spacing: var(--hx-display-spacing);
+  text-transform: uppercase;
+  color: var(--hx-text-soft);
+}
+
+.AppDetailsMain a,
+.AppDetailsMain .Link {
+  color: var(--hx-blue-hi);
+}
+
+.AppDetailsMain a:hover {
+  color: #ffffff;
+}
+
+.ActivityFeedContainer textarea,
+.ActivityFeedContainer input {
+  background: var(--hx-surface-sunken);
+  border: 1px solid var(--hx-line);
+  border-radius: var(--hx-radius-sm);
+  color: var(--hx-text);
+}
+
+.ActivityFeedContainer textarea:focus-visible {
+  border-color: var(--hx-blue-line);
+  box-shadow: 0 0 0 4px var(--hx-blue-soft);
+  outline: none;
+}
+
+/* ============================================================================
+   DIALOGS / SETTINGS
+   ============================================================================ */
+
+.ModalPosition_Content,
+.DialogContent {
+  background:
+    linear-gradient(180deg, rgba(22, 30, 49, 0.98), rgba(10, 15, 26, 0.99));
+  border: 1px solid var(--hx-line-strong);
+  border-radius: var(--hx-radius-lg);
+  box-shadow:
+    0 30px 90px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  color: var(--hx-text);
+}
+
+.ModalOverlayBackground {
+  background: rgba(3, 5, 10, 0.72) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.ModalPosition_TopBar {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--hx-blue-hi), transparent) !important;
+}
+
+.DialogHeader {
+  font-family: var(--hx-font-display);
+  font-weight: var(--hx-display-weight);
+  letter-spacing: var(--hx-display-spacing);
+  text-transform: uppercase;
+  color: var(--hx-text);
+}
+
+.DialogSubHeader,
+.DialogLabel,
+.DialogLabelStrong,
+.DialogControlsSectionHeader {
+  color: var(--hx-text);
+}
+
+.DialogLabelExplainer,
+.DialogBodyText {
+  color: var(--hx-text-muted);
+}
+
+button.DialogButton,
+.DialogButton {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--hx-line-strong);
+  border-radius: var(--hx-radius-sm);
+  color: var(--hx-text);
+  transition:
+    background var(--hx-fast) var(--hx-ease),
+    border-color var(--hx-fast) var(--hx-ease);
+}
+
+button.DialogButton:hover,
+.DialogButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--hx-blue-line);
+}
+
+.DialogButton.Primary,
+button.DialogButton.Primary {
+  background: linear-gradient(180deg, var(--hx-blue-hi), var(--hx-blue)) !important;
+  background-image: linear-gradient(180deg, var(--hx-blue-hi), var(--hx-blue)) !important;
+  border-color: var(--hx-blue) !important;
+  color: #ffffff !important;
+}
+
+.DialogButton.Destructive,
+button.DialogButton.Destructive {
+  background: rgba(240, 122, 122, 0.14) !important;
+  border-color: rgba(240, 122, 122, 0.45) !important;
+  color: #ffc2c2 !important;
+}
+
+.DialogInput,
+.DialogTextInputBase,
+.DialogDropDown,
+.DialogDropDown_CurrentDisplay,
+.DialogInput_Wrapper {
+  background: var(--hx-surface-sunken);
+  border: 1px solid var(--hx-line);
+  border-radius: var(--hx-radius-sm);
+  color: var(--hx-text);
+}
+
+.DialogInput:focus,
+.DialogTextInputBase:focus,
+.DialogDropDown:focus-visible {
+  border-color: var(--hx-blue-line);
+  box-shadow: 0 0 0 4px var(--hx-blue-soft);
+  outline: none;
+}
+
+.DialogToggleField_Control,
+.DialogCheckbox_Container,
+.DialogSlider_Slider {
+  accent-color: var(--hx-blue);
+}
+
+.DialogProgressBar_ProgressBarContainer {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--hx-radius-pill);
+}
+
+.DialogProgressBar_Value {
+  background: linear-gradient(90deg, var(--hx-blue), var(--hx-blue-hi));
+}
+
+/* Menus */
+.ContextMenuPopupBody,
+.contextMenu,
+.BasicUIContextMenu {
+  background: rgba(16, 23, 39, 0.98);
+  border: 1px solid var(--hx-line-strong);
+  border-radius: var(--hx-radius-sm);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55);
+  color: var(--hx-text);
+}
+
+.contextMenuItem,
+.contextMenuGameItem {
+  border-radius: var(--hx-radius-xs);
+  color: var(--hx-text-soft);
+}
+
+.contextMenuItem:hover,
+.contextMenuGameItem:hover {
+  background: var(--hx-blue-soft);
+  color: var(--hx-text);
+}
+
+/* Notifications */
+.notificationGeneralHeader,
+.notificationsChannelHeader {
+  font-family: var(--hx-font-display);
+  letter-spacing: var(--hx-display-spacing);
+  text-transform: uppercase;
+}
+
+.DownloadProgressBar {
+  background: linear-gradient(90deg, var(--hx-blue), var(--hx-blue-hi)) !important;
+}
+
+/* ============================================================================
+   FOCUS / RESPONSIVE / MOTION
+   ============================================================================ */
+
+.DialogButton:focus-visible,
+.PlayButton:focus-visible,
+.LibraryItemBox:focus-visible,
+.GameListEntryContainer:focus-visible,
+.SuperNav .MenuButton:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--hx-blue);
+  outline-offset: 2px;
+}
+
+@media (max-width: 1100px) {
+  .LibraryHome {
+    padding: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .LibraryItemBox:hover {
+    transform: none;
+  }
+}

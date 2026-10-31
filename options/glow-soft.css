@@ -1,0 +1,6 @@
+/* AMBIENT GLOW — SOFT (default)
+   The blue atmosphere behind the library and game pages. */
+
+:root {
+  --hx-glow-opacity: 1;
+}

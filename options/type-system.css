@@ -1,0 +1,9 @@
+/* TYPOGRAPHY — SYSTEM
+   Steam's own Motiva Sans stack, no downloaded fonts. */
+
+:root {
+  --hx-font: "Motiva Sans", "Segoe UI", sans-serif;
+  --hx-font-display: "Motiva Sans", "Segoe UI", sans-serif;
+  --hx-display-weight: 700;
+  --hx-display-spacing: 0.08em;
+}

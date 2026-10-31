@@ -1,0 +1,52 @@
+/* ============================================================================
+   HARMONY+ — BIG PICTURE / GAMEPAD UI
+   Token remap only. Focus navigation, layout and controller behaviour stay
+   native; the theme contributes colour, typography and corner softness.
+   ============================================================================ */
+
+:root {
+  --color-accent-1: 16, 95, 235;
+  --color-accent-2: 61, 124, 255;
+  --color-accent-3: 10, 70, 184;
+  --color-text-light-title: #f7f9ff;
+  --color-text-light-subtitle: #d5dded;
+  --color-text-light-body: #c8d2e6;
+  --color-text-light-description: #98a5bd;
+  --color-text-body-title: #f7f9ff;
+  --color-text-body-subtitle: #d5dded;
+  --color-text-body-body: #c8d2e6;
+  --color-text-body-description: #98a5bd;
+  --color-progress-bar-foreground: #3d7cff;
+  --color-progress-bar-background: #1b2438;
+}
+
+body {
+  background: #060910;
+  color: #f7f9ff;
+  font-family: var(--hx-font, "Motiva Sans", "Segoe UI", sans-serif);
+}
+
+.gpfocus,
+.gpfocuswithin {
+  outline: 2px solid #3d7cff !important;
+  outline-offset: 3px;
+}
+
+.DialogButton {
+  border-radius: 12px;
+}
+
+.DialogButton.Primary {
+  background: linear-gradient(180deg, #3d7cff, #105feb);
+  color: #ffffff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

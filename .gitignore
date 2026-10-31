@@ -1,0 +1,6 @@
+_references/
+.cursor/
+node_modules/
+*.zip
+*.rar
+*.log

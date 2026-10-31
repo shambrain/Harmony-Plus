@@ -1,0 +1,460 @@
+/* ============================================================================
+   HARMONY+ — FRIENDS LIST & CHAT
+   Native Steam chat behaviour is preserved. This file only changes material,
+   typography and state colour. Presence colours remain Steam's own.
+   ============================================================================ */
+
+body,
+.fullheight,
+.popup_chat_frame,
+.client_chat_frame {
+  background: var(--hx-void);
+  color: var(--hx-text);
+  font-family: var(--hx-font);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  pointer-events: none;
+  opacity: var(--hx-frame-opacity, 1);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.09),
+    inset 0 0 60px rgba(0, 0, 0, 0.32);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  z-index: 9001;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(61, 124, 255, 0.75), transparent);
+}
+
+.friendsui-container,
+.popup_chat_frame {
+  background:
+    radial-gradient(560px 280px at 50% -10%, rgba(16, 95, 235, 0.14), transparent 70%),
+    linear-gradient(180deg, var(--hx-bg-2), var(--hx-void));
+}
+
+/* ============================================================================
+   TITLEBAR
+   ============================================================================ */
+
+.TitleBar,
+.chatTitleBar,
+.titleBarContainer {
+  background: linear-gradient(180deg, rgba(17, 25, 43, 0.98), rgba(8, 12, 21, 0.98));
+  border-bottom: 1px solid var(--hx-line);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.title-area-highlight {
+  background: linear-gradient(90deg, transparent, rgba(61, 124, 255, 0.5), transparent);
+  opacity: 0.55;
+}
+
+.title-area-icon {
+  border-radius: var(--hx-radius-xs);
+  color: var(--hx-text-muted);
+  transition:
+    background var(--hx-fast) var(--hx-ease),
+    color var(--hx-fast) var(--hx-ease);
+}
+
+.title-area-icon:hover {
+  background: var(--hx-sheen);
+  color: var(--hx-text);
+}
+
+.title-area-icon.closeButton:hover {
+  background: rgba(240, 122, 122, 0.18);
+  color: #ffd2d2;
+}
+
+.window_resize_grip {
+  opacity: 0.5;
+}
+
+/* ============================================================================
+   FRIENDS LIST
+   ============================================================================ */
+
+.friendListHeaderContainer,
+.friendsListSectionTitle,
+.chatSectionTitle {
+  background: transparent;
+  color: var(--hx-text-muted);
+  font-family: var(--hx-font-display);
+  font-weight: var(--hx-display-weight);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.friendsListContainer,
+.friendlist,
+.friendlistListContainer {
+  background: transparent;
+}
+
+.friend,
+.quickAccessFriend {
+  border-radius: var(--hx-radius-xs);
+  color: var(--hx-text-soft);
+  transition:
+    background var(--hx-fast) var(--hx-ease),
+    box-shadow var(--hx-fast) var(--hx-ease);
+}
+
+.friend:hover,
+.quickAccessFriend:hover {
+  background: linear-gradient(90deg, var(--hx-blue-soft), rgba(255, 255, 255, 0.02));
+  box-shadow: inset 2px 0 0 var(--hx-blue);
+}
+
+.friend.Selected,
+.friend.selected {
+  background: var(--hx-blue-soft);
+  box-shadow: inset 2px 0 0 var(--hx-blue-hi);
+}
+
+.friendGroup,
+.friendCategoryContainer {
+  border-top: 1px solid var(--hx-line);
+}
+
+.statusAndName {
+  color: var(--hx-text);
+}
+
+.friend .label,
+.friend .name {
+  color: var(--hx-text);
+  font-weight: 600;
+}
+
+.avatarStatus,
+.PersonaStatusIcon {
+  filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.7));
+}
+
+.friendListInsetShadowTop,
+.friendListInsetShadowBottom,
+.FriendListInsetShadowTop,
+.FriendListInsetShadowBottom {
+  display: none;
+}
+
+.socialTabSearchContainer input,
+.friendListHeaderContainer input,
+.friendlist input {
+  background: var(--hx-surface-sunken);
+  border: 1px solid var(--hx-line);
+  border-radius: var(--hx-radius-pill);
+  color: var(--hx-text);
+  padding-inline: 12px;
+}
+
+.socialTabSearchContainer input:focus-visible,
+.friendListHeaderContainer input:focus-visible {
+  border-color: var(--hx-blue-line);
+  box-shadow: 0 0 0 4px var(--hx-blue-soft);
+  outline: none;
+}
+
+.friendTab,
+.friendTabButtonsContainer {
+  color: var(--hx-text-muted);
+}
+
+.friendTab.Selected,
+.friendTab.active {
+  color: var(--hx-text);
+  box-shadow: inset 0 -2px 0 var(--hx-blue-hi);
+}
+
+/* ============================================================================
+   CHAT LISTS / TABS
+   ============================================================================ */
+
+.ChatRoomList,
+.chatRoomListContainer,
+.ChatRoomListContainerParent {
+  background: var(--hx-surface-sunken);
+  border-right: 1px solid var(--hx-line);
+}
+
+.ChatRoomListItem,
+.ChatRoomListGroupItem,
+.chatRoomListGroupItem {
+  border-radius: var(--hx-radius-xs);
+  color: var(--hx-text-soft);
+}
+
+.ChatRoomListItem:hover,
+.ChatRoomListGroupItem:hover {
+  background: var(--hx-sheen);
+  color: var(--hx-text);
+}
+
+.ChatRoomListItem.Active,
+.ChatRoomListGroupItem.Active,
+.chatRoomGroupActiveChat {
+  background: var(--hx-blue-soft);
+  box-shadow: inset 2px 0 0 var(--hx-blue);
+}
+
+.chatRoomName {
+  font-weight: 600;
+}
+
+.chatRoomTextChannelUnreadNumber,
+.chatTabUnreadBadge,
+.chatUnreadCircle {
+  background: var(--hx-blue);
+  color: #ffffff;
+  border-radius: var(--hx-radius-pill);
+  font-weight: 800;
+}
+
+.ChatTabs,
+.chatTabList,
+.chatTabSetContainer {
+  background: transparent;
+  border-bottom: 1px solid var(--hx-line);
+}
+
+.ChatTab,
+.chatTab {
+  border-radius: var(--hx-radius-xs) var(--hx-radius-xs) 0 0;
+  color: var(--hx-text-muted);
+}
+
+.ChatTab.Active,
+.chatTab.Active,
+.chatTab.Focused {
+  background: var(--hx-surface);
+  color: var(--hx-text);
+  box-shadow: inset 0 -2px 0 var(--hx-blue-hi);
+}
+
+.chatTabClose:hover {
+  background: rgba(240, 122, 122, 0.18);
+  border-radius: var(--hx-radius-xs);
+}
+
+/* ============================================================================
+   CHAT WINDOW
+   ============================================================================ */
+
+.chatWindow,
+.ChatRoomGroup_WindowContent,
+.chatStack {
+  background: transparent;
+}
+
+.chatHistory,
+.chatHistoryScroll,
+.ChatHistoryContainer,
+.chatHistoryAndMembers {
+  background: linear-gradient(180deg, rgba(11, 17, 32, 0.6), rgba(6, 9, 16, 0.85));
+}
+
+.ChatMessageBlock {
+  border-radius: var(--hx-radius-xs);
+  padding-inline: 6px;
+  transition: background var(--hx-fast) var(--hx-ease);
+}
+
+.ChatMessageBlock:hover {
+  background: rgba(255, 255, 255, 0.035);
+  box-shadow: inset 2px 0 0 rgba(61, 124, 255, 0.45);
+}
+
+.ChatMessageBlock .speaker .name,
+.ChatSpeaker .name,
+.ChatRoomSpeaker .name {
+  color: var(--hx-text);
+  font-weight: 800;
+}
+
+.ChatMessageBlock .msg,
+.ChatMessageBlock .MessageText,
+.ChatMessageBlock .message {
+  color: var(--hx-text-soft);
+}
+
+.FriendChatTimeStamp,
+.chatTimestamp,
+.ChatMessageBlock .timestamp {
+  color: var(--hx-text-dim);
+}
+
+.ChatMessageBlock a {
+  color: var(--hx-blue-hi);
+}
+
+.ChatMessageDeleted {
+  color: var(--hx-text-dim);
+  font-style: italic;
+}
+
+.ChatMessageInvite,
+.ChatMessageOpenGraph,
+.ChatMessageOpenGraph_Body {
+  background: var(--hx-surface);
+  border: 1px solid var(--hx-line);
+  border-radius: var(--hx-radius-sm);
+}
+
+.ChatMessageInvite button,
+.ChatMessageOpenGraph button,
+.chatInvite button,
+.chatInvite .DialogButton,
+.ChatMessageInvite .DialogButton.Primary,
+.ChatMessageOpenGraph .DialogButton.Primary {
+  background: linear-gradient(180deg, var(--hx-blue-hi), var(--hx-blue)) !important;
+  background-image: linear-gradient(180deg, var(--hx-blue-hi), var(--hx-blue)) !important;
+  border: 1px solid var(--hx-blue) !important;
+  border-radius: var(--hx-radius-sm);
+  color: #ffffff !important;
+}
+
+.ChatMessageInvite button:hover,
+.ChatMessageOpenGraph button:hover {
+  filter: brightness(1.08);
+}
+
+/* Composer — all native controls keep their hit areas. */
+.chatEntry,
+.chatEntryControls,
+.chatEntryActionsContainer {
+  background: transparent;
+}
+
+.chatTextarea {
+  background: var(--hx-surface-sunken);
+  border: 1px solid var(--hx-line);
+  border-radius: var(--hx-radius-sm);
+  color: var(--hx-text);
+  caret-color: var(--hx-blue-hi);
+  padding: 9px 12px;
+}
+
+.chatTextarea:focus,
+.chatTextarea:focus-visible {
+  border-color: var(--hx-blue-line);
+  box-shadow: 0 0 0 4px var(--hx-blue-soft);
+  outline: none;
+}
+
+.chatTextarea::placeholder {
+  color: var(--hx-text-dim);
+}
+
+.chatSubmitButton {
+  background: linear-gradient(180deg, var(--hx-blue-hi), var(--hx-blue));
+  border-radius: var(--hx-radius-pill);
+  color: #ffffff;
+  transition:
+    filter var(--hx-fast) var(--hx-ease),
+    opacity var(--hx-fast) var(--hx-ease);
+}
+
+.chatSubmitButton:hover {
+  filter: brightness(1.08);
+}
+
+.chatSubmitButton.disabled,
+.chatSubmitButton[disabled] {
+  opacity: 0.42;
+  filter: grayscale(0.35);
+}
+
+.chatFileUploadPreview,
+.chatFileUploadProgressContainer {
+  background: var(--hx-surface);
+  border: 1px solid var(--hx-line);
+  border-radius: var(--hx-radius-sm);
+}
+
+.chatFileUploadProgressBarContainer {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--hx-radius-pill);
+}
+
+.chatRoomMembers,
+.chatRoomVoiceList,
+.activeVoiceChat {
+  background: var(--hx-surface-sunken);
+  border-left: 1px solid var(--hx-line);
+}
+
+.voiceRoomDragBar,
+.activeVoiceHeader {
+  background: var(--hx-surface);
+  border-bottom: 1px solid var(--hx-line);
+}
+
+.ContextMenuPopupBody,
+.contextMenu {
+  background: rgba(16, 23, 39, 0.98);
+  border: 1px solid var(--hx-line-strong);
+  border-radius: var(--hx-radius-sm);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.55);
+}
+
+.contextMenuItem {
+  border-radius: var(--hx-radius-xs);
+}
+
+.contextMenuItem:hover {
+  background: var(--hx-blue-soft);
+}
+
+/* ============================================================================
+   SCROLLBARS / FOCUS / MOTION
+   ============================================================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: var(--hx-radius-pill);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.chatTextarea:focus-visible,
+.chatSubmitButton:focus-visible,
+.friend:focus-visible,
+.ChatTab:focus-visible,
+.title-area-icon:focus-visible {
+  outline: 2px solid var(--hx-blue);
+  outline-offset: 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

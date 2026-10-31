@@ -1,0 +1,9 @@
+/* MOTION — CALM (default)
+   Soft fades, a three-pixel lift, nothing looping. */
+
+:root {
+  --hx-fast: 140ms;
+  --hx-mid: 220ms;
+  --hx-slow: 360ms;
+  --hx-lift: -3px;
+}

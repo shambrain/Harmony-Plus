@@ -1,0 +1,18 @@
+/* LAYOUT — SPACIOUS
+   More air around shelves, panels and the hero. Suited to large displays. */
+
+:root {
+  --hx-space: 1.28;
+}
+
+.LibraryHome {
+  padding: 32px;
+}
+
+.AppDetailsSection {
+  padding: 28px;
+}
+
+.PlayBar {
+  padding-block: 14px;
+}

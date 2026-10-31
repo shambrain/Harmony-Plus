@@ -1,0 +1,157 @@
+{
+  "name": "Harmony+",
+  "author": "shambrain",
+  "description": "A calm, premium Fluent-inspired Steam theme: deep midnight surfaces, milk-white type, rounded glass panels and the exact Harmony blue #105FEB. Built for long sessions, not screenshots.",
+  "version": "1.0.0",
+  "header_image": "https://raw.githubusercontent.com/shambrain/Harmony-Plus/main/assets/previews/library-cozy.png",
+  "splash_image": "https://raw.githubusercontent.com/shambrain/Harmony-Plus/main/assets/previews/game-details.png",
+  "tags": [
+    "Fluent",
+    "Minimal",
+    "Cozy",
+    "Premium",
+    "Dark",
+    "Rounded",
+    "Accessible"
+  ],
+  "github": {
+    "owner": "shambrain",
+    "repo_name": "Harmony-Plus"
+  },
+  "Patches": [
+    {
+      "MatchRegexString": "^Steam$",
+      "TargetCss": "libraryroot.custom.css"
+    },
+    {
+      "MatchRegexString": "^OverlayBrowser_Browser$",
+      "TargetCss": "libraryroot.custom.css"
+    },
+    {
+      "MatchRegexString": "^SP Overlay:",
+      "TargetCss": "libraryroot.custom.css"
+    },
+    {
+      "MatchRegexString": "Supernav$",
+      "TargetCss": "libraryroot.custom.css"
+    },
+    {
+      "MatchRegexString": "^notificationtoasts_",
+      "TargetCss": "libraryroot.custom.css"
+    },
+    {
+      "MatchRegexString": "^SteamBrowser_Find$",
+      "TargetCss": "libraryroot.custom.css"
+    },
+    {
+      "MatchRegexString": "^OverlayTab\\d+_Find$",
+      "TargetCss": "libraryroot.custom.css"
+    },
+    {
+      "MatchRegexString": "^Steam Big Picture Mode$",
+      "TargetCss": "bigpicture.custom.css"
+    },
+    {
+      "MatchRegexString": "^QuickAccess_",
+      "TargetCss": "bigpicture.custom.css"
+    },
+    {
+      "MatchRegexString": "^MainMenu_",
+      "TargetCss": "bigpicture.custom.css"
+    },
+    {
+      "MatchRegexString": ".friendsui-container",
+      "TargetCss": "friends.custom.css"
+    },
+    {
+      "MatchRegexString": "Menu$",
+      "TargetCss": "libraryroot.custom.css"
+    },
+    {
+      "MatchRegexString": ".ModalDialogPopup",
+      "TargetCss": "libraryroot.custom.css"
+    },
+    {
+      "MatchRegexString": ".FullModalOverlay",
+      "TargetCss": "libraryroot.custom.css"
+    },
+    {
+      "MatchRegexString": "^https:\\/\\/store\\.steampowered\\.com\\/.*",
+      "TargetCss": "webkit.css"
+    },
+    {
+      "MatchRegexString": "^https:\\/\\/steamcommunity\\.com\\/.*",
+      "TargetCss": "webkit.css"
+    }
+  ],
+  "Conditions": {
+    "Layout Density": {
+      "description": "Adjusts stage padding, panel spacing and the library rail. Every value changes the rendered layout.",
+      "default": "Cozy",
+      "tab": "Layout",
+      "values": {
+        "Compact": {
+          "TargetCss": { "affects": [".*"], "src": "options/density-compact.css" }
+        },
+        "Cozy": {
+          "TargetCss": { "affects": [".*"], "src": "options/density-cozy.css" }
+        },
+        "Spacious": {
+          "TargetCss": { "affects": [".*"], "src": "options/density-spacious.css" }
+        }
+      }
+    },
+    "Motion": {
+      "description": "Calm uses soft fades and a two-pixel lift. Still removes transitions entirely. The OS reduced-motion setting always wins.",
+      "default": "Calm",
+      "tab": "Motion",
+      "values": {
+        "Calm": {
+          "TargetCss": { "affects": [".*"], "src": "options/motion-calm.css" }
+        },
+        "Still": {
+          "TargetCss": { "affects": [".*"], "src": "options/motion-still.css" }
+        }
+      }
+    },
+    "Ambient Glow": {
+      "description": "The soft blue atmosphere behind the library and game pages. Turn off for a flatter, darker surface.",
+      "default": "Soft",
+      "tab": "Appearance",
+      "values": {
+        "Soft": {
+          "TargetCss": { "affects": [".*"], "src": "options/glow-soft.css" }
+        },
+        "None": {
+          "TargetCss": { "affects": [".*"], "src": "options/glow-none.css" }
+        }
+      }
+    },
+    "Corner Radius": {
+      "description": "Soft uses the full rounded Fluent geometry. Crisp tightens panels and controls for denser information layouts.",
+      "default": "Soft",
+      "tab": "Appearance",
+      "values": {
+        "Soft": {
+          "TargetCss": { "affects": [".*"], "src": "options/radius-soft.css" }
+        },
+        "Crisp": {
+          "TargetCss": { "affects": [".*"], "src": "options/radius-crisp.css" }
+        }
+      }
+    },
+    "Typography": {
+      "description": "Montserrat uses the bundled ExtraBold, SemiBold and Regular TTF files. System uses Steam's own Motiva Sans stack.",
+      "default": "Montserrat",
+      "tab": "Typography",
+      "values": {
+        "Montserrat": {
+          "TargetCss": { "affects": [".*"], "src": "options/type-montserrat.css" }
+        },
+        "System": {
+          "TargetCss": { "affects": [".*"], "src": "options/type-system.css" }
+        }
+      }
+    }
+  }
+}

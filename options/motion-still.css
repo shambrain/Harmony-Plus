@@ -1,0 +1,13 @@
+/* MOTION — STILL
+   Instant state changes, no transforms. */
+
+:root {
+  --hx-fast: 0ms;
+  --hx-mid: 0ms;
+  --hx-slow: 0ms;
+  --hx-lift: 0px;
+}
+
+.LibraryItemBox:hover {
+  transform: none;
+}
